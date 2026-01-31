@@ -1,0 +1,19 @@
+[package]
+name = "pmhft-strategy"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+pmhft-common = { path = "../pmhft-common" }
+pmhft-orderbook = { path = "../pmhft-orderbook" }
+pmhft-matching = { path = "../pmhft-matching" }
+tokio = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
+dashmap = { workspace = true }
+chrono = { workspace = true }
+rust_decimal = { workspace = true }
+uuid = { workspace = true }
+
+[dev-dependencies]
+rust_decimal_macros = "1"

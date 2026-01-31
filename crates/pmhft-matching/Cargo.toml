@@ -1,0 +1,16 @@
+[package]
+name = "pmhft-matching"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+pmhft-common = { path = "../pmhft-common" }
+pmhft-dome-client = { path = "../pmhft-dome-client" }
+dashmap = { workspace = true }
+strsim = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }

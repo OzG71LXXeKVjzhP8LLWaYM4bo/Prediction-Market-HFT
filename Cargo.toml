@@ -1,0 +1,92 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/pmhft-common",
+    "crates/pmhft-orderbook",
+    "crates/pmhft-dome-client",
+    "crates/pmhft-kalshi-client",
+    "crates/pmhft-polymarket-signer",
+    "crates/pmhft-matching",
+    "crates/pmhft-market-data",
+    "crates/pmhft-strategy",
+    "crates/pmhft-execution",
+    "crates/pmhft-risk",
+    "crates/pmhft-telemetry",
+]
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = { version = "0.24", features = ["native-tls"] }
+reqwest = { version = "0.12", features = ["json", "gzip"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rust_decimal = { version = "1", features = ["serde-with-str"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+config = "0.14"
+alloy-sol-types = "0.8"
+alloy-primitives = "0.8"
+alloy-signer = "0.8"
+alloy-signer-local = "0.8"
+rsa = { version = "0.9", features = ["sha2"] }
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+rand = "0.8"
+dashmap = "6"
+crossbeam-channel = "0.5"
+metrics = "0.24"
+metrics-exporter-prometheus = "0.16"
+uuid = { version = "1", features = ["v4", "serde"] }
+clap = { version = "4", features = ["derive"] }
+strsim = "0.11"
+lasso = "0.7"
+futures = "0.3"
+futures-util = "0.3"
+async-trait = "0.1"
+url = "2"
+rustls = "0.23"
+tokio-rustls = "0.26"
+webpki-roots = "0.26"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[package]
+name = "pmhft"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+pmhft-common = { path = "crates/pmhft-common" }
+pmhft-orderbook = { path = "crates/pmhft-orderbook" }
+pmhft-dome-client = { path = "crates/pmhft-dome-client" }
+pmhft-kalshi-client = { path = "crates/pmhft-kalshi-client" }
+pmhft-polymarket-signer = { path = "crates/pmhft-polymarket-signer" }
+pmhft-matching = { path = "crates/pmhft-matching" }
+pmhft-market-data = { path = "crates/pmhft-market-data" }
+pmhft-strategy = { path = "crates/pmhft-strategy" }
+pmhft-execution = { path = "crates/pmhft-execution" }
+pmhft-risk = { path = "crates/pmhft-risk" }
+pmhft-telemetry = { path = "crates/pmhft-telemetry" }
+tokio = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+config = { workspace = true }
+futures = { workspace = true }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+[profile.release.build-override]
+opt-level = 3

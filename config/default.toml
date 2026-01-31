@@ -1,0 +1,59 @@
+[dome]
+api_key = ""  # Set via env: PMHFT__DOME__API_KEY
+base_url = "https://api.domeapi.io/v1"
+ws_url = "wss://ws.domeapi.io"
+rate_limit_per_sec = 1  # Free tier (1/s). Dev=100, Pro=300.
+request_timeout_ms = 5000
+
+[kalshi]
+api_key_id = ""             # Set via env: PMHFT__KALSHI__API_KEY_ID
+private_key_path = ""       # Path to RSA PEM file
+rest_base_url = "https://demo-api.kalshi.co/trade-api/v2"  # Demo for development
+fix_host = ""               # Kalshi FIX gateway host (requires approval)
+fix_port = 0                # Kalshi FIX gateway port
+fix_sender_comp_id = ""     # Assigned by Kalshi
+fix_target_comp_id = ""     # Assigned by Kalshi
+
+[polymarket]
+wallet_private_key = ""     # Set via env: PMHFT__POLYMARKET__WALLET_PRIVATE_KEY
+chain_id = 137              # Polygon mainnet
+exchange_address = "0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E"
+api_key = ""                # L2 CLOB API key
+api_secret = ""             # L2 CLOB secret
+api_passphrase = ""         # L2 CLOB passphrase
+
+[matching]
+sports_refresh_interval_sec = 900      # 15 min
+fuzzy_refresh_interval_sec = 1800     # 30 min
+fuzzy_similarity_threshold = 0.85
+min_volume_usd = 1000.0
+max_spread_pct = 10.0
+exclude_near_expiry_hours = 2
+
+[strategy]
+min_edge_bps = "50"
+z_score_entry = "2.0"
+z_score_exit = "0.5"
+spread_window = 100
+max_half_life_sec = 3600.0
+max_quote_age_ms = 5000
+
+[risk]
+max_position_per_market = "500"
+max_gross_exposure_usd = "10000"
+max_order_notional_usd = "1000"
+max_daily_loss_usd = "-500"
+max_open_orders = 20
+
+[execution]
+live_trading = false
+default_order_type = "FOK"
+use_fix_for_kalshi = true
+use_dome_for_polymarket = true
+max_slippage_bps = "20"
+fill_timeout_ms = 3000
+
+[telemetry]
+log_level = "info"
+prometheus_port = 9090
+enable_json_logs = false
